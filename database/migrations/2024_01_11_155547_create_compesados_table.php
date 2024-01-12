@@ -13,17 +13,22 @@ return new class extends Migration
     {
         Schema::create('compesados', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('fecha_creacion');
-            $table->datetime('inicio_compesado');
-            $table->dateTime('fin_compesado');
+            $table->datetime('fecha_creacion');
+            $table->datetime('inicio_compensado');
+            $table->datetime('fin_compensado');
             $table->text('justificacion');
             $table->text('adjunto');
             $table->text('observaciones');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_estado')->references('id')->on('estado_compesado');
+            $table->unsignedBigInteger('id_estado_compesado');
+            $table->unsignedBigInteger('id_empleado');
             $table->timestamps();
+
+            // Definición de claves foráneas
+            $table->foreign('id_estado_compesado')->references('id')->on('estado_compesado')->onDelete('cascade');
+            $table->foreign('id_empleado')->references('id')->on('empleados')->onDelete('cascade');
         });
     }
+
 
     /**
      * Reverse the migrations.
