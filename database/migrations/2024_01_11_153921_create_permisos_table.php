@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
+
     public function up(): void
     {
         Schema::create('permisos', function (Blueprint $table) {
@@ -25,14 +24,12 @@ return new class extends Migration
         // Definición de claves foráneas
         $table->foreign('id_empleado')->references('id')->on('empleados')->onDelete('cascade');
         $table->foreign('id_tipo_permiso')->references('id')->on('tipo_permisos')->onDelete('cascade');
-        $table->foreign('id_estado_permiso')->references('id')->on('estados_permiso')->onDelete('cascade');
+        $table->foreign('id_estado_permiso')->references('id')->on('estado_permiso')->onDelete('cascade');
     });
     }
 
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('permisos');

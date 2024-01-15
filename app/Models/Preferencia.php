@@ -5,21 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class EstadoPermiso
+ * Class Preferencia
  *
  * @property $id
- * @property $estado
+ * @property $dependecia
+ * @property $nombre_jefe
+ * @property $direccion
+ * @property $telefono
  * @property $created_at
  * @property $updated_at
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class EstadoPermiso extends Model
+class Preferencia extends Model
 {
     
     static $rules = [
-		'estado' => 'required',
+		'dependecia' => 'required',
+		'nombre_jefe' => 'required',
+		'direccion' => 'required',
+		'telefono' => 'required',
     ];
 
     protected $perPage = 20;
@@ -29,7 +35,7 @@ class EstadoPermiso extends Model
      *
      * @var array
      */
-    protected $fillable = ['estado'];
+    protected $fillable = ['dependecia','nombre_jefe','direccion','telefono'];
 
 
 

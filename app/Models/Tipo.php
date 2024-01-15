@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Cargo
+ * Class Tipo
  *
  * @property $id
- * @property $cargo
+ * @property $tipo
+ * @property $cant_horas_personales
  * @property $created_at
  * @property $updated_at
  *
@@ -16,11 +17,12 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Cargo extends Model
+class Tipo extends Model
 {
     
     static $rules = [
-		'cargo' => 'required',
+		'tipo' => 'required',
+		'cant_horas_personales' => 'required',
     ];
 
     protected $perPage = 20;
@@ -30,7 +32,7 @@ class Cargo extends Model
      *
      * @var array
      */
-    protected $fillable = ['cargo'];
+    protected $fillable = ['tipo','cant_horas_personales'];
 
 
     /**
@@ -38,7 +40,7 @@ class Cargo extends Model
      */
     public function empleados()
     {
-        return $this->hasMany('App\Models\Empleado', 'id_cargo', 'id');
+        return $this->hasMany('App\Models\Empleado', 'id_tipo_empleado', 'id');
     }
     
 

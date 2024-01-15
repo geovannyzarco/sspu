@@ -2,18 +2,44 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Categoria
+ *
+ * @property $id
+ * @property $categoria
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Empleado[] $empleados
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class Categoria extends Model
 {
-    protected $fillable = [
-        'categoria',
+    
+    static $rules = [
+		'categoria' => 'required',
     ];
 
-    // Relación con Empleados
+    protected $perPage = 20;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['categoria'];
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function empleados()
     {
-        return $this->hasMany(Empleado::class, 'id_categoria');
+        return $this->hasMany('App\Models\Empleado', 'id_categoria', 'id');
     }
+    
+
 }

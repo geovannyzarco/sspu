@@ -2,18 +2,35 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class TipoPermiso
+ *
+ * @property $id
+ * @property $tipo_permiso
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class TipoPermiso extends Model
 {
-    protected $fillable = [
-        'tipo_permiso',
+    
+    static $rules = [
+		'tipo_permiso' => 'required',
     ];
 
-    // Relación con Permisos
-    public function permisos()
-    {
-        return $this->hasMany(Permiso::class, 'id_tipo_permiso');
-    }
+    protected $perPage = 20;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['tipo_permiso'];
+
+
+
 }
