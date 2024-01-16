@@ -8,6 +8,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\EstadoCompesadoController;
 use App\Http\Controllers\EstadoPermisoController;
 use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\MarcajeController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\TipoController;
 use App\Http\Controllers\TipoPermisoController;
@@ -42,3 +43,7 @@ Route::resource('horarios', HorarioController::class);
 Route::resource('empleados', EmpleadoController::class);
 Route::resource('Compensados', CompesadoController::class);
 Route::resource('Permisos', PermisoController::class);
+
+Route::get('marcaje/form', [MarcajeController::class, 'showForm'])->name('marcaje.form');
+Route::post('marcaje/data', [MarcajeController::class, 'importData'])->name('marcaje.importData');
+Route::get('marcaje', [MarcajeController::class, 'displayData'])->name('marcaje');
